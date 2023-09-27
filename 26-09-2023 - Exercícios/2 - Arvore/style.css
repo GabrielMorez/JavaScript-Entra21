@@ -1,0 +1,10 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.quadrado{
+    background-color: green; 
+    width: 100px; 
+    height: 100px;
+}
