@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+}
+
+#listaLivros{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+#adcLivro{
+    width: 150px;
+}
+
+#buscarLivro{
+    width: 150px;
+}
+
+input{
+    margin: 2px;
+}
