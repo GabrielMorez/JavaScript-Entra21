@@ -1,3 +1,16 @@
 li{
     list-style-type: none
 }
+
+button{
+    margin: 5px;
+}
+
+.concluido{
+    text-decoration: line-through;
+    color: red;
+}
+
+.linha{
+    text-decoration: none;
+}
