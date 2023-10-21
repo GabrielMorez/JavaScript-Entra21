@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fff;
+}
+
+#relogio {
+    background-color: rgba(0, 0, 0, 0.63);
+    padding: 20px;
+    border: solid  3px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#hora {
+    font-size: 2rem;
+    text-align: center;
+    color: #ff0000d0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5em;
+}
