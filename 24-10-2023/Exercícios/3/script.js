@@ -15,7 +15,7 @@ function obterUsuario() {
             if(isNaN(usuario.id)){
                 reject(`Id inválido. Verifique.`) 
             } else {
-                resolve(usuario)
+                resolve(obterTelefone(usuario.id,telefone))
             }
         });
     }, 1000);
@@ -24,11 +24,17 @@ function obterUsuario() {
 function obterTelefone(idUsuario, tel) {
     setTimeout(function () {
         return new Promise((resolve, reject) => {
-            if(isNan(idUsuario)){
+            if(isNaN(idUsuario)){
                 reject(`Id inválido para consulta. Verifique.`) 
             } else{
-                resolve(tel)
+                resolve(console.log({
+                    nome: usuario.nome,
+                    telefone: `(${tel.ddd}) ${tel.telefone}` 
+                 }));
             }
         });
     }, 2000);
 }
+
+
+obterUsuario();
