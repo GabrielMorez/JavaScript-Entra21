@@ -1,40 +1,43 @@
-const usuario = {
-    id: 1,
-    nome: "Aladin",
-    dataNacimento: new Date(),
-}
-
-const telefone = {
-    telefone: 997445151,
-    ddd: 47,
-}
-
 function obterUsuario() {
+  return new Promise((resolve, reject) => {
     setTimeout(function () {
-        return new Promise ((resolve, reject) => {
-            if(isNaN(usuario.id)){
-                reject(`Id inválido. Verifique.`) 
-            } else {
-                resolve(obterTelefone(usuario.id,telefone))
-            }
-        });
+      return resolve({
+        id: 1,
+        nome: "Aladin",
+        dataNascimento: new Date(),
+      });
     }, 1000);
+  });
 }
-
-function obterTelefone(idUsuario, tel) {
+ 
+function obterTelefone(idUsuario) {
+  return new Promise((resolve, reject) => {
     setTimeout(function () {
-        return new Promise((resolve, reject) => {
-            if(isNaN(idUsuario)){
-                reject(`Id inválido para consulta. Verifique.`) 
-            } else{
-                resolve(console.log({
-                    nome: usuario.nome,
-                    telefone: `(${tel.ddd}) ${tel.telefone}` 
-                 }));
-            }
-        });
+      return resolve({
+        telefone: "997445151",
+        ddd: 47,
+      });
     }, 2000);
+  });
 }
-
-
-obterUsuario();
+ 
+const usuarioPromise = obterUsuario();
+ 
+usuarioPromise
+  .then((usuario) => {
+    return obterTelefone(usuario.id)
+    .then((tudo) => {
+      return {
+        user: {
+          nome: usuario.nome,
+          telefone: tudo.telefone,
+        },
+      };
+    });
+  })
+  .then(function (resultado) {
+    console.log("Sucesso", resultado);
+  })
+  .catch(function (error) {
+    console.error("Deu ruim", error);
+  });
