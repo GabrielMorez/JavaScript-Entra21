@@ -1,0 +1,10 @@
+{
+    "clientes" : [
+        {
+            "id": 1,
+            "nome": "Gabriel",
+            "email": "gabrielmorez@hotmail.com",
+            "fone": "(47) 98425-0095"
+        }
+    ]
+}
