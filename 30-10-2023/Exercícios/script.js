@@ -1,14 +1,67 @@
-function putCliente(id){
+function putCliente(id, corpo){
 
     fetch(`http://localhost:3000/clientes/${id}`,{
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(corpo)
     })
+    .then(response => response.json())
+    .catch(erro => erro.json())    
 }
 
-function alteraCliente(id){
+function alteraLinhaCliente(id){
+    let filhosLinha = document.getElementById(id).children;
+    let idCliente = filhosLinha[0].innerHTML;
+    let nomeCliente = filhosLinha[1];
+    let nomeClienteText = nomeCliente.innerText
+    let emailCliente = filhosLinha[2];
+    let emailClienteText = emailCliente.innerText;
+    let telefoneCliente = filhosLinha[3];
+    let telefoneClienteText = telefoneCliente.innerText;
+    let alterar = filhosLinha[4];
+    let confirmar = document.createElement('button');
+    let inputNome = document.createElement('input');
+    let inputEmail = document.createElement('input');
+    let inputTelefone = document.createElement('input');
+
+    nomeCliente.innerHTML = '';
+    nomeCliente.appendChild(inputNome);
+    inputNome.value = nomeClienteText;
+
+    emailCliente.innerHTML = '';
+    emailCliente.appendChild(inputEmail);
+    inputEmail.value = emailClienteText;
+
+    telefoneCliente.innerHTML = '';
+    telefoneCliente.appendChild(inputTelefone);
+    inputTelefone.value = telefoneClienteText;
+
+    confirmar.setAttribute('class', 'btn btn-success');
+    confirmar.setAttribute('id', idCliente);
+    confirmar.innerHTML = 'Confirmar';
+    alterar.replaceChild(confirmar, alterar.children[0]);
+
+    inputNome.setAttribute('id',`nome${idCliente}`);
+    inputEmail.setAttribute('id',`email${idCliente}`);
+    inputTelefone.setAttribute('id',`telefone${idCliente}`);
+
+    confirmar.addEventListener('click', () => {
+        let nomeCliente = document.getElementById(`nome${idCliente}`).value;
+        let emailCliente = document.getElementById(`email${idCliente}`).value;
+        let foneCliente = document.getElementById(`telefone${idCliente}`).value;
+
+        let body = {
+            id: idCliente,
+            nome: nomeCliente,
+            email: emailCliente,
+            fone: foneCliente
+        }
+
+        putCliente(idCliente, body);
+    })
+
 }
 
 function deleteCliente(id){
@@ -76,10 +129,10 @@ function apresentaClientes(response){
     let acoes = document.createElement("td");
     let remover = document.createElement("button");
     let alterar = document.createElement("button");
-    let posicao = cliente.id
     
     listaClientes.appendChild(linha);
     linha.appendChild(id);
+    linha.setAttribute('id',cliente.id);
     id.appendChild(document.createTextNode(cliente.id));
     linha.appendChild(nome);
     nome.appendChild(document.createTextNode(cliente.nome));
@@ -91,13 +144,13 @@ function apresentaClientes(response){
     linha.appendChild(acoes);
 
     acoes.appendChild(alterar);
-    alterar.setAttribute('id', posicao)
+    alterar.setAttribute('id', cliente.id)
     alterar.appendChild(document.createTextNode('Alterar'))
     alterar.setAttribute('class','btn btn-info');
     alterar.setAttribute('type','button');
 
     acoes.appendChild(remover);
-    remover.setAttribute('id', posicao)
+    remover.setAttribute('id', cliente.id)
     remover.appendChild(document.createTextNode('Remover'));
     remover.setAttribute('class','btn btn-danger');
     remover.setAttribute('type','button');
@@ -107,7 +160,7 @@ function apresentaClientes(response){
     })
 
     alterar.addEventListener('click', () => {
-        alteraCliente(alterar.id)
+        alteraLinhaCliente(alterar.id)
     })
     });
 }

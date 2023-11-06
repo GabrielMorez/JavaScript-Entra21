@@ -1,10 +1,16 @@
 {
   "clientes": [
     {
-      "nome": "teste",
-      "email": "teste",
-      "fone": "teste",
-      "id": 1
+      "id": 3,
+      "nome": "Gabriel Morez",
+      "email": "gabrielmorez@hotmail.com",
+      "fone": "47984250095afdsfas"
+    },
+    {
+      "id": 4,
+      "nome": "Lucieli",
+      "email": "nogueiralucieli@gmail.com",
+      "fone": "47 99999-8790"
     }
   ]
 }
