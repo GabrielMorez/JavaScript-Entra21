@@ -2,15 +2,9 @@
   "clientes": [
     {
       "id": 3,
-      "nome": "Gabriel Morez",
+      "nome": "Gabriel Morez dos Santos",
       "email": "gabrielmorez@hotmail.com",
-      "fone": "47984250095afdsfas"
-    },
-    {
-      "id": 4,
-      "nome": "Lucieli",
-      "email": "nogueiralucieli@gmail.com",
-      "fone": "47 99999-8790"
+      "fone": "47 98425-0095"
     }
   ]
 }

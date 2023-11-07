@@ -59,7 +59,15 @@ function alteraLinhaCliente(id){
             fone: foneCliente
         }
 
-        putCliente(idCliente, body);
+        if(nomeCliente == false){
+            validacoes.innerHTML = `O campo "Nome" está vazio. Verifique.`
+        } else if(emailCliente == false){
+            validacoes.innerHTML = `O campo "E-mail" está vazio. Verifique.`
+        } else if(foneCliente == false){
+            validacoes.innerHTML = `O campo "Telefone" está vazio. Verifique.`
+        } else {
+            putCliente(idCliente, body);
+        }
     })
 
 }
